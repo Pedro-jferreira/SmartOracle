@@ -6,13 +6,14 @@ import java.io.Serializable;
 public class Usuario implements Serializable {
     private Pessoa pessoa;
     private Password password;
-    private int emprestimos;
+    private int emprestimos,id;
 
     public Usuario() {
         this.emprestimos = 0;
     }
 
-    public Usuario(Pessoa pessoa, Password password) {
+    public Usuario(int id ,Pessoa pessoa, Password password) {
+        this.id = id;
         this.pessoa = pessoa;
         this.password = password;
         this.emprestimos = 0;
@@ -24,6 +25,18 @@ public class Usuario implements Serializable {
                 "pessoa=" + pessoa +
                 ", password=" + password +
                 '}';
+    }
+
+    public void setEmprestimos(int emprestimos) {
+        this.emprestimos = emprestimos;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Pessoa getPessoa() {

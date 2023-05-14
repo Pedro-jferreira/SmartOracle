@@ -1,7 +1,7 @@
 package Armazenamento;
 
 import Interfaces.DAO;
-import ManagerStock.Emprestimo;
+import ManagerStock.Reserva;
 
 import javax.swing.*;
 import java.io.*;
@@ -9,11 +9,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class EmprestimoDAO extends Emprestimo implements DAO {
+public class ReservaDAO extends Reserva implements DAO {
     @Override
     public boolean Gravar() {
         try {
-            FileOutputStream fileOut = new FileOutputStream("C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\3° periodo\\programação oo\\SmartOracle\\Emprestimos\\"+this.getId());
+            FileOutputStream fileOut = new FileOutputStream("C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\3° periodo\\programação oo\\SmartOracle\\Reservas\\"+this.getId());
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(this);
             out.close();
@@ -28,26 +28,26 @@ public class EmprestimoDAO extends Emprestimo implements DAO {
     @Override
     public boolean Atualizar(Object obj) {
         if (Excluir()){
-            EmprestimoDAO emprestimoDAO = (EmprestimoDAO) obj;
-            return emprestimoDAO.Gravar();
+            ReservaDAO reservaDAO = (ReservaDAO) obj;
+            return reservaDAO.Gravar();
         }else return false;
     }
 
     @Override
     public boolean Excluir() {
-        Path path = Paths.get("C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\3° periodo\\programação oo\\SmartOracle\\Emprestimos\\"+this.getId());
+        Path path = Paths.get("C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\3° periodo\\programação oo\\SmartOracle\\Reservas\\"+this.getId());
         try {
             Files.delete(path);
             return true;
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null,"Ocorreu um erro ao apagar o arquivo.\nErro: " + e);
             return false;
-        }    }
+        }      }
 
     @Override
     public Object BuscarPorId(String id) {
         try {
-            FileInputStream file = new FileInputStream("C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\3° periodo\\programação oo\\SmartOracle\\Emprestimos\\"+id);
+            FileInputStream file = new FileInputStream("C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\3° periodo\\programação oo\\SmartOracle\\Reservas\\"+id);
             ObjectInputStream stream = new ObjectInputStream(file);
             Object obj = stream.readObject();
             stream.close();

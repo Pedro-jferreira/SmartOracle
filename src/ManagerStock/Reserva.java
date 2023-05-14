@@ -12,6 +12,7 @@ public class Reserva implements Serializable {
     private Usuario usuario;
     private Date dataReserva;
     private Emprestimo emprestimo;
+    private int id;
 
     public Reserva() {
     }
@@ -89,5 +90,21 @@ public class Reserva implements Serializable {
                 ", usuario=" + usuario +
                 ", dataReserva=" + dataReserva +
                 '}';
+    }
+
+    public Emprestimo getEmprestimo() {
+        return emprestimo;
+    }
+
+    public void setEmprestimo(Emprestimo emprestimo) {
+        this.emprestimo = emprestimo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

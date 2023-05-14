@@ -14,11 +14,13 @@ public class Emprestimo implements Serializable {
     private Usuario usuario;
     private Calendar dataEmprestimo;
     private Calendar dataDevolucao;
+    private int id;
 
     public Emprestimo() {
     }
 
-    public Emprestimo(Livro livro, Usuario usuario) {
+    public Emprestimo(int id ,Livro livro, Usuario usuario) {
+        this.id = id;
         this.livro = livro;
         this.usuario = usuario;
         this.dataEmprestimo = Calendar.getInstance();
@@ -66,6 +68,22 @@ public class Emprestimo implements Serializable {
 
     public void FecharLivro() {
         livro.FecharLivro();
+    }
+
+    public void setDataEmprestimo(Calendar dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
+    }
+
+    public void setDataDevolucao(Calendar dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     private int calcularPrazoEmprestimo(Usuario usuario) {

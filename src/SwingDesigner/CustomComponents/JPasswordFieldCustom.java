@@ -4,31 +4,23 @@ import javax.swing.*;
 import javax.swing.text.Document;
 import java.awt.*;
 
-public class JTextFieldCustom extends JTextField {
-    private int radius = 10;
-
-    public JTextFieldCustom() {
-        setOpaque(false);
-    }
-
-    public JTextFieldCustom(String text) {
+public class JPasswordFieldCustom extends JPasswordField {
+    private int radius=10;
+    public JPasswordFieldCustom(String text) {
         super(text);
-        setOpaque(false);
     }
 
-    public JTextFieldCustom(int columns) {
+    public JPasswordFieldCustom(int columns) {
         super(columns);
         setOpaque(false);
     }
 
-    public JTextFieldCustom(String text, int columns) {
+    public JPasswordFieldCustom(String text, int columns) {
         super(text, columns);
-        setOpaque(false);
     }
 
-    public JTextFieldCustom(Document doc, String text, int columns) {
-        super(doc, text, columns);
-        setOpaque(false);
+    public JPasswordFieldCustom(Document doc, String txt, int columns) {
+        super(doc, txt, columns);
     }
 
     @Override
@@ -42,10 +34,9 @@ public class JTextFieldCustom extends JTextField {
 
     @Override
     protected void paintBorder(Graphics g) {
-        g.setColor(getForeground());
-        g.drawRoundRect(0, 0, getWidth() , getHeight(), getRadius(), getRadius());
-        super.paintBorder(g);
-        g.dispose();
+        g.setColor(Color.magenta);
+        g.drawRoundRect(0, 0, getWidth()-1 , getHeight()-1 , getRadius(), getRadius());
+
     }
 
     public int getRadius() {

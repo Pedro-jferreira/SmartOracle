@@ -11,45 +11,35 @@ public class JButtonCustom extends JButton{
     private  Color backgroundcolor,clicked,entered;
 
     public JButtonCustom() {
-        this.backgroundcolor = Color.darkGray;
-        this.clicked = Color.black;
-        this.entered= Color.gray;
+
         setForeground(Color.lightGray);
         setCustomConfig();
     }
 
     public JButtonCustom(Icon icon) {
         super(icon);
-        this.backgroundcolor = Color.darkGray;
-        this.clicked = Color.black;
-        this.entered= Color.gray;
+
         setForeground(Color.lightGray);
         setCustomConfig();
     }
 
     public JButtonCustom(String text) {
         super(text);
-        this.backgroundcolor = Color.darkGray;
-        this.clicked = Color.black;
-        this.entered= Color.gray;
+
         setForeground(Color.lightGray);
         setCustomConfig();
     }
 
     public JButtonCustom(Action a) {
         super(a);
-        this.backgroundcolor = Color.darkGray;
-        this.clicked = Color.black;
-        this.entered= Color.gray;
+
         setForeground(Color.lightGray);
         setCustomConfig();
     }
 
     public JButtonCustom(String text, Icon icon) {
         super(text, icon);
-        this.backgroundcolor = Color.darkGray;
-        this.clicked = Color.black;
-        this.entered= Color.gray;
+
         setForeground(Color.lightGray);
         setCustomConfig();
     }
@@ -71,7 +61,7 @@ public class JButtonCustom extends JButton{
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                setBackground(getBackground());
+                setBackground(getBackgroundcolor());
             }
 
             @Override
@@ -82,7 +72,7 @@ public class JButtonCustom extends JButton{
 
             @Override
             public void mouseExited(MouseEvent e) {
-                setBackground(getBackground());
+                setBackground(getBackgroundcolor());
             }
         });
 
@@ -90,22 +80,12 @@ public class JButtonCustom extends JButton{
 
     public void setColors(Color background,Color entered, Color clicked){
         this.clicked = clicked;
-        this.backgroundcolor = background;
         this.entered=entered;
+        this.backgroundcolor=background;
         setBackground(background);
     }
 
 
-    @Override
-    public Color getBackground() {
-        return super.getBackground();
-    }
-
-    @Override
-    public void setBackground(Color bg) {
-        this.backgroundcolor=bg;
-        super.setBackground(this.backgroundcolor);
-    }
     public Color getClicked() {
         return clicked;
     }
@@ -114,9 +94,8 @@ public class JButtonCustom extends JButton{
         return entered;
     }
 
-    @Override
-    public void setSize(Dimension d) {
-        super.setSize(d);
+    public Color getBackgroundcolor() {
+        return backgroundcolor;
     }
 
     @Override

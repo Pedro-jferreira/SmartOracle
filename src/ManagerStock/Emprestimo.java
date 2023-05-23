@@ -86,18 +86,16 @@ public class Emprestimo implements Serializable {
         this.id = id;
     }
 
-    private int calcularPrazoEmprestimo(Usuario usuario) {
+    public int calcularPrazoEmprestimo(Usuario usuario) {
 
         if (usuario.getPessoa() instanceof Estudante) {
             return 7;
-        } else if (usuario.getPessoa() instanceof Funcionario) {
-            return 15;
         } else if (usuario.getPessoa() instanceof Professor) {
             return 30;
-        } else {
-            return 0;
-
+        } else if (usuario.getPessoa() instanceof Funcionario) {
+            return 15;
         }
+        return 0;
     }
 }
 

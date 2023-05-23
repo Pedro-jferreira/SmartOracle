@@ -1,36 +1,31 @@
-import Armazenamento.ProdutoDAO;
+import Armazenamento.EmprestimoDAO;
 import Product.Livro;
-import Product.Produto;
+import User.Password;
+import User.Professor;
+import User.Usuario;
 
-import javax.swing.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Main {
     public static void main(String[] args) {
-        ProdutoDAO produtodao = new ProdutoDAO();
-        produtodao.setObra(new Livro(1, "a procura da morte", "eu", "uma ai", "2001", true, "alguma", "3", "200"));
 
-        if (produtodao.Gravar()){
-            JOptionPane.showMessageDialog(null, "livro gravado com sucesso");
-        }
-        System.out.println(Produto.ObraExist(1));
-        System.out.println(produtodao);
-        ProdutoDAO produtodao1 = new ProdutoDAO();
-        produtodao1.setObra(new Livro(1, "a procura da morte", "eu e eu", "uma ai", "2001", true, "alguma", "3", "200"));
+        EmprestimoDAO emprestimoDAO= new EmprestimoDAO();
+        emprestimoDAO.setId(1);
+        emprestimoDAO.setUsuario(new Usuario(1,new Professor(" ", "","" , "", "", "", "", ""),new Password("Aa345678")));
+        emprestimoDAO.setLivro(new Livro(1, "", "", "", "", true, "", "", ""));
+        emprestimoDAO.setDataEmprestimo(Calendar.getInstance());
+        emprestimoDAO.setDataDevolucao(Calendar.getInstance());
+        emprestimoDAO.getDataDevolucao().add(Calendar.DAY_OF_MONTH, emprestimoDAO.calcularPrazoEmprestimo(emprestimoDAO.getUsuario()));
+        String formato = "dd/MM/yyyy";
 
-        System.out.println(produtodao1);
-        if (produtodao.Atualizar(produtodao1)){
-            JOptionPane.showMessageDialog(null, "usuario atualizado com sucesso!");
-        }
-        System.out.println(produtodao);
+        // Cria um objeto SimpleDateFormat com o formato desejado
+        SimpleDateFormat sdf = new SimpleDateFormat(formato);
 
-        ProdutoDAO produtodao2 = (ProdutoDAO) new ProdutoDAO().BuscarPorId("1");
-        produtodao2.Excluir();
-        System.out.println(produtodao2);
+        // Formata a data para uma string
+        String dataFormatada = sdf.format(emprestimoDAO.getDataDevolucao().getTime());
 
-
-
-
-
+        System.out.println("Data formatada: " + dataFormatada);
 
     }
 }
